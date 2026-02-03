@@ -6,6 +6,9 @@ product_id = 0
 router = APIRouter(prefix="/products", tags=["Product"])
 
 
+# 생성
+
+
 @router.post("")
 def create_product(product_data: ProductModel):
     global product_id
@@ -17,10 +20,16 @@ def create_product(product_data: ProductModel):
     return product
 
 
+# 전체 조회
+
+
 @router.get("")
 def read_products():
     # 저장된 모든 제품 반환
     return products
+
+
+# 단일 조회
 
 
 @router.get("/{id}")
@@ -32,6 +41,9 @@ def read_product(id: int):
     return {"message": "데이터를 찾을 수 없습니다."}
 
 
+# 수정
+
+
 @router.put("/{id}")
 def update_product(id: int, updated_product: ProductModel):
     for product in products:
@@ -41,6 +53,9 @@ def update_product(id: int, updated_product: ProductModel):
             product.price = updated_product.price
             return product
     return {"message": "수정할 대상이 없습니다."}
+
+
+# 삭제
 
 
 @router.delete("/{id}")
