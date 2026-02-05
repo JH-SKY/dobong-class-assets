@@ -2,11 +2,22 @@ from fastapi import FastAPI
 
 from mysite.post_api import router as post_router
 from mysite2.post_api import router as pydantic_router
+from mysite3.routers.post_router import router as mvc_router
+from mysite4.routers.post_router import router as db_router
+from database import engine, Base
+from mysite4.models.post import Post 
+
+# 기존 테이블 지우기
+# Base.metadata.drop_all(bind=engine)
+
+# 정의된 모델들을 기반으로 DB에 테이블을 생성한다.
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 app.include_router(post_router)
 app.include_router(pydantic_router)
-
+app.include_router(mvc_router)
+app.include_router(db_router)
 
 @app.get("/")
 def read_root():

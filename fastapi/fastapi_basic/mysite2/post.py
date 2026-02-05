@@ -16,3 +16,18 @@ class Post:
         self.id = id
         self.title = title
         self.content = content
+
+
+class PostListResponse(BaseModel):
+    id: int
+    title: str
+
+
+class PostDetailResponse(BaseModel):
+    id: int
+    title: str
+    content: str
+
+
+# class PostDetailResponse(PostListResponse):
+#     content: str

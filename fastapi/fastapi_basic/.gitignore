@@ -1,0 +1,10 @@
+# Python 가상환경
+.venv/
+__pycache__/
+*.py[cod]
+
+# 환경 변수 (중요!)
+.env
+
+# uv 관련
+.python-version
