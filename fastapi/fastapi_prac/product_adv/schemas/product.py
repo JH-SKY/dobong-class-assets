@@ -20,7 +20,7 @@ class ProductCreate(BaseModel):
 
     @field_validator("discount_price")
     @classmethod
-    def check_discount_less_than_price(cls, v: int, info: ValidationInfo) -> int:
+    def check_discount_less_than_price(cls, v: int, info: ValidationInfo) -> str:
         if "price" in info.data and v >= info.data["price"]:
             raise ValueError("discout가 price보다 높아서는 안되.")
         return v

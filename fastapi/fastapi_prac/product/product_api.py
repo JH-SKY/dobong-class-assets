@@ -1,61 +1,51 @@
 from fastapi import APIRouter
-from .product import ProductModel, Product
+from .product import Product, ProductCreate
+
+router = APIRouter(prefix="/products")
 
 products = []
 product_id = 0
-router = APIRouter(prefix="/products", tags=["Product"])
-
-
-# 생성
 
 
 @router.post("")
-def create_product(product_data: ProductModel):
+def create_product(data: ProductCreate):
     global product_id
     product_id += 1
 
-    product = Product(product_id, product_data.name, product_data.price)
+    product = Product(product_id, data.name, data.price)
 
     products.append(product)
+
     return product
 
 
-# 전체 조회
-
-
+# 조회
 @router.get("")
 def read_products():
-    # 저장된 모든 제품 반환
     return products
 
 
-# 단일 조회
-
-
+# 단일조회
 @router.get("/{id}")
-def read_product(id: int):
-    # 식별자가 일치하는 데이터를 리스트에서 탐색
+def read_products_by_id(id: int):
+    # id를 통해 product 가져오기
     for product in products:
         if product.id == id:
             return product
     return {"message": "데이터를 찾을 수 없습니다."}
 
 
-# 수정
-
-
+# 단일 수정
 @router.put("/{id}")
-def update_product(id: int, updated_product: ProductModel):
+def update_product(id: int, data: ProductCreate):
+    # id를 통해 product 가져오고
+    # 입력받은 정보를 바탕으로 수정한다.
     for product in products:
         if product.id == id:
-            # 전달받은 객체의 필드값으로 기존 데이터 갱신
-            product.name = updated_product.name
-            product.price = updated_product.price
+            product.name = data.name
+            product.price = data.price
             return product
     return {"message": "수정할 대상이 없습니다."}
-
-
-# 삭제
 
 
 @router.delete("/{id}")
