@@ -24,7 +24,7 @@ def create_post(data: PostCreate, db: Session = Depends(get_db)):
     return post_service.create_post(db, data)
 
 
-@router.get("", response_model=list[PostListResponse])
+@router.get("", response_model=list[PostDetailResponse])
 def read_posts(db: Session = Depends(get_db)):
     return post_service.read_posts(db)
 
@@ -92,8 +92,6 @@ def add_tag_to_post(post_id: int, tag_name: str, db: Session = Depends(get_db)):
 )
 def create_post_with_tags(data: PostCreateWithTags, db: Session = Depends(get_db)):
     return post_service.create_post_with_tags(db, data)
-
-
 
 
 @router.delete("/{post_id}/tags/{tag_name}", status_code=status.HTTP_204_NO_CONTENT)

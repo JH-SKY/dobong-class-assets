@@ -26,9 +26,8 @@ class ProductListResponse(BaseModel):
 
 
 class ProductDetailResponse(ProductListResponse):
-    # category_name을 변환을 시켜서 응답하게 할수도 있습니다.
-    is_sold_out = bool
-    stock = int
+    is_sold_out : bool
+    stock : int
 
 class ProductUpdateRequest(BaseModel):
     name: str = Field(..., min_length=2, max_length=50, alias="product_name")

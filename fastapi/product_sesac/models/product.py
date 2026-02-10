@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 class Product(Base):
     __tablename__ = "products"
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    name: Mapped[str] = mapped_column(String(25), nullable=False)
+    name: Mapped[str] = mapped_column(String(50), nullable=False)
     price: Mapped[int] = mapped_column( nullable=False)
     discount_price: Mapped[int] = mapped_column(default = 0)
     stock: Mapped[int] = mapped_column( default=10)

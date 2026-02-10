@@ -5,6 +5,7 @@ from mysite2.post_api import router as pydantic_router
 from mysite3.routers.post_router import router as mvc_router
 from mysite4.routers.post_router import router as db_router
 from mysite4.routers.tag_router import router as tag_router
+from nplusone.router import router as nplusone_router   
 
 from database import engine
 from mysite4 import models
@@ -21,6 +22,7 @@ app.include_router(pydantic_router)
 app.include_router(mvc_router)
 app.include_router(db_router)
 app.include_router(tag_router)
+app.include_router(nplusone_router)
 
 
 @app.get("/")

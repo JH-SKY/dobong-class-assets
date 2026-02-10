@@ -19,4 +19,7 @@ class Comment(Base):
     post_id: Mapped[int] = mapped_column(ForeignKey("posts.id"), nullable=False)
 
     # 2. 관계 설정: 댓글 객체에서 소속된 게시글 객체로 바로 접근한다.
-    post: Mapped["Post"] = relationship("Post", back_populates="comments")
+    post: Mapped["Post"] = relationship(
+        "Post",
+        back_populates="comments",
+    )

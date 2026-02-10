@@ -1,4 +1,4 @@
-from product_db.models import Product
+from product_db.models import Product, WishList
 from sqlalchemy.orm import Session
 from sqlalchemy import select
 
@@ -18,6 +18,12 @@ class ProductRepository:
 
     def find_by_id(self, product_id: int, db: Session):
         return db.get(Product, product_id)
+
+    def find_by_wishlist_user(self, user_id, db: Session):
+        stmt = (
+            select(Product).join(Product.wishlists).where(WishList.user_id == user_id)
+        )
+        return db.scalars(stmt).all()
 
 
 product_repository = ProductRepository()

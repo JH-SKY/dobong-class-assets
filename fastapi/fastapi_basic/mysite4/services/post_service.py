@@ -81,7 +81,7 @@ class PostService:
 
         return post
 
-    # 계시글이랑 태그랑 동시생성!!
+    # services/post_service.py
 
     def create_post_with_tags(self, db: Session, data: PostCreateWithTags):
         # 1. 게시글 객체 생성 (아직 DB 저장 전)
