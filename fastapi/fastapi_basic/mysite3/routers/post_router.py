@@ -19,6 +19,7 @@ def read_posts():
 def read_post_by_id(id: int):
     return post_service.read_post_by_id(id)
 
+
 @router.put("/{id}", response_model=PostDetailResponse)
 def update_post(id: int, data: PostCreate):
     return post_service.update_post(id, data)
