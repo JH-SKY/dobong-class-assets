@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from database import engine, Base 
-import models
+# import models
 from routers.product_router import router as product_router
 from routers.category_router import router as category_router
 # 기존 테이블 지우기

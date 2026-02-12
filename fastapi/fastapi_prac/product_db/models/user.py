@@ -1,8 +1,8 @@
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from sqlalchemy import String, Integer, ForeignKey
+from sqlalchemy import String
 from database import Base
 from sqlalchemy.ext.associationproxy import association_proxy, AssociationProxy
-
+from .wishlist import WishList
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -21,5 +21,5 @@ class User(Base):
     )
 
     wishlist_items: AssociationProxy[list["Product"]] = association_proxy(
-        "wishlists", "product"
+        "wishlists", "product", creator=lambda _product: WishList(product=_product)
     )

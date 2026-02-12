@@ -15,5 +15,5 @@ class Product(Base):
     stock: Mapped[int] = mapped_column( default=10)
     category_id: Mapped[int] = mapped_column(ForeignKey("categories.id"), nullable=False)
 
-    category = relationship("Category", back_populates="products")
+    category:Mapped["Category"] = relationship("Category", back_populates="products")
 

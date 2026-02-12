@@ -15,5 +15,4 @@ class Category(Base):
     name: Mapped[str] = mapped_column(String(50), nullable=False, unique=True)
 
     products: Mapped[list["Product"]] = relationship(
-        "Product", back_populates="category", cascade="all, delete-orphan"
-    )
+        "Product", back_populates="category", cascade="all, delete-orphan")

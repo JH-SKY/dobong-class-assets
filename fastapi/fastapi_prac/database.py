@@ -18,8 +18,6 @@ class Base(DeclarativeBase):
     pass
 
 # DB 세션 의존성 주입 함수
-# commit, rollback 로직을 여기에 추가할수도 있어요.
-# with db.begin() 대신에
 def get_db():
     db = SessionLocal()
     try:

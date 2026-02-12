@@ -10,6 +10,7 @@ from mysite4.schemas.post import (
     PostDetailResponse,
     PostListResponse,
     PostCreateWithTags,
+    PostListWithTagsResponse,
 )
 
 from mysite4.services.comment_service import comment_service
@@ -24,7 +25,7 @@ def create_post(data: PostCreate, db: Session = Depends(get_db)):
     return post_service.create_post(db, data)
 
 
-@router.get("", response_model=list[PostDetailResponse])
+@router.get("", response_model=list[PostListWithTagsResponse])
 def read_posts(db: Session = Depends(get_db)):
     return post_service.read_posts(db)
 

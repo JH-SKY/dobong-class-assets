@@ -25,4 +25,6 @@ class Post(Base):
         back_populates="post", cascade="all, delete-orphan"
     )
     # post.tags로 바로 접근이 가능해집니다.
-    tags: AssociationProxy[list["Tag"]] = association_proxy("post_tags", "tag")
+    tags: AssociationProxy[list["Tag"]] = association_proxy(
+        "post_tags", "tag", creator=lambda _tag: PostTag(tag=_tag)
+    )

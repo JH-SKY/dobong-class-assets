@@ -25,16 +25,18 @@ class ProductService:
             product_repository.save(db, new_product)
 
         db.refresh(new_product)
+        # 새롭게 product에 대한 category를 한번에 가져오자!
         return new_product
 
     def get_products(self, db):
-        return product_repository.find_all(db)
+        # return product_repository.find_all(db)
+        return product_repository.find_all_with_category(db)
 
     def get_product(self, product_id, db):
-        product = product_repository.find_by_id(product_id, db)
+        product = product_repository.find_by_id_with_category(product_id, db)
         if not product:
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="없어")
-        return product_repository.find_by_id(product_id, db)
+        return product
 
 
 product_service = ProductService()

@@ -11,7 +11,7 @@ class PostCreate(BaseModel):
 
 
 class PostCreateWithTags(PostCreate):
-    tags: list[str] = [] # ["Python", "FastAPI"] 형태의 태그 이름 리스트
+    tags: list[str] = []  # ["Python", "FastAPI"] 형태의 태그 이름 리스트
 
 
 class PostListResponse(BaseModel):
@@ -20,6 +20,10 @@ class PostListResponse(BaseModel):
 
     # SQLAlchemy 모델 객체를 Pydantic에서 읽기 위한 설정
     model_config = ConfigDict(from_attributes=True)
+
+
+class PostListWithTagsResponse(PostListResponse):
+    tags: list[TagResponse]
 
 
 class PostDetailResponse(BaseModel):

@@ -25,7 +25,7 @@ class ProductService:
                 price=data.price,
                 discount_price=data.discount_price,
                 stock=data.stock,
-                category=category,  # category_id 대신 객체 연결
+                category=category  # category_id 대신 객체 연결
             )
 
             product_repository.save(db, new_product)
@@ -85,7 +85,6 @@ class ProductService:
                         detail="존재하지 않는 카테고리입니다.",
                     )
                 product.category = category
-
 
         return product  
 

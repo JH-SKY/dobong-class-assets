@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from sqlalchemy import String, Integer, ForeignKey
+from sqlalchemy import  ForeignKey
 from database import Base
 from typing import TYPE_CHECKING
 
@@ -16,3 +16,4 @@ class WishList(Base):
 
     user: Mapped["User"] = relationship("User", back_populates="wishlists")
     product: Mapped["Product"] = relationship("Product", back_populates="wishlists")
+    

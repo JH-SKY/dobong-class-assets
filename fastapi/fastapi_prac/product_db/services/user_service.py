@@ -38,8 +38,8 @@ class UserService:
 
             wishlist = WishList(user=user, product=product)
             # cascade를 활용해서 user - product의 연관테이블인 wishlist를 생성.
-            # user.wishlist_items.append(product)
-            user.wishlists.append(wishlist)
+            user.wishlist_items.append(product)
+            # user.wishlists.append(wishlist)
 
         return "성공"
 
@@ -47,7 +47,7 @@ class UserService:
         # 1. user를 가져오고, 해당하는 product를 가져온다.
         # 2. product를 가져온다.where whilist.user_id = user_id인.
         # -> join이 필요해서 이따가 하도록 하겠습니다
-        return user_repository.find_by_id(user_id, db)
+        return user_repository.find_by_id_with_wishlist_product(user_id, db)
 
     def read_wishlist_v2(self, user_id: int, db: Session):
         return product_repository.find_by_wishlist_user(user_id, db)

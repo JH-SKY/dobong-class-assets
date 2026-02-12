@@ -5,10 +5,14 @@ from mysite2.post_api import router as pydantic_router
 from mysite3.routers.post_router import router as mvc_router
 from mysite4.routers.post_router import router as db_router
 from mysite4.routers.tag_router import router as tag_router
-from nplusone.router import router as nplusone_router   
+from mysite4.routers.auth_router import router as auth_router
+from mysite4.routers.user_router import router as user_router
+from mysite4.routers.post2_router import router as post2_router
+from nplusone.router import router as nplusone_router
 
 from database import engine
 from mysite4 import models
+from fastapi_pagination import add_pagination
 
 # 기존 테이블 지우기
 # models.Base.metadata.drop_all(bind=engine)
@@ -17,11 +21,17 @@ from mysite4 import models
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+
+add_pagination(app)
+
 app.include_router(post_router)
 app.include_router(pydantic_router)
 app.include_router(mvc_router)
 app.include_router(db_router)
 app.include_router(tag_router)
+app.include_router(auth_router)
+app.include_router(user_router)
+app.include_router(post2_router)
 app.include_router(nplusone_router)
 
 

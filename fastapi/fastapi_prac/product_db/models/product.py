@@ -6,6 +6,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from .category import Category
     from .wishlist import WishList
+    from .wishlist2 import WishList2
 
 
 # id, name, price, categoy_id
@@ -22,4 +23,7 @@ class Product(Base):
     category: Mapped["Category"] = relationship("Category", back_populates="products")
     wishlists: Mapped[list["WishList"]] = relationship(
         "WishList", back_populates="product"
+    )
+    wishlists2: Mapped[list["WishList2"]] = relationship(
+        "WishList2", back_populates="product"
     )
