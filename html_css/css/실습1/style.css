@@ -1,0 +1,38 @@
+body{
+    background-color:gainsboro
+}
+
+.card{
+    background-color: white;
+    border-radius: 15px;
+    width: 500px;
+    margin: 20px;
+}
+
+.card-name{
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 30px;
+    border-bottom: 1px solid;
+    border-color: gray;
+}
+
+.card-content{
+    padding: 30px;
+}
+
+.card-tags{
+    padding: 30px;
+    background-color: #f0f0f0;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.card-tags > span{
+    display: inline-block;
+    /* margin: 0 10px 0 0; */
+    margin-right: 10px;
+    background-color: #e0e0e0;
+    border-radius: 15px;
+    padding: 3px 10px 3px 10px;
+}

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS 중앙정렬 방법 모음</title>
+    <link rel="stylesheet" href="center.css" />
+  </head>
+  <body>
+    <h1>CSS 중앙정렬 방법 모음</h1>
+
+    <!-- ===== 1. 박스 in 박스 ===== -->
+    <h2>1. 큰 박스 안에 작은 박스 중앙정렬</h2>
+    <div class="flex-wrap">
+      <div class="example">
+        <h3>방법 1 — Flexbox</h3>
+        <p class="desc">display: flex + justify-content/align-items: center</p>
+        <div class="outer box-method1">
+          <div class="inner">inner</div>
+        </div>
+      </div>
+
+      <div class="example">
+        <h3>방법 2 — Margin Auto + Padding</h3>
+        <p class="desc">margin: 0 auto (수평) + padding (수직)</p>
+        <div class="outer box-method2">
+          <div class="inner">inner</div>
+        </div>
+      </div>
+
+      <div class="example">
+        <h3>방법 3 — Position + Margin Auto</h3>
+        <p class="desc">
+          position: absolute + top/bottom/left/right: 0 + margin: auto
+        </p>
+        <div class="outer box-method3">
+          <div class="inner">inner</div>
+        </div>
+      </div>
+
+      <div class="example">
+        <h3>방법 4 — Position + Transform</h3>
+        <p class="desc">
+          position: absolute + top/left: 50% + translate(-50%, -50%)
+        </p>
+        <div class="outer box-method4">
+          <div class="inner">inner</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== 2. 텍스트 중앙정렬 ===== -->
+    <h2>2. 텍스트를 박스 안에서 중앙정렬</h2>
+    <div class="flex-wrap">
+      <div class="example">
+        <h3>방법 1 — Flexbox</h3>
+        <p class="desc">display: flex + justify-content/align-items: center</p>
+        <div class="text-box text-method1">안녕하세요</div>
+      </div>
+
+      <div class="example">
+        <h3>방법 2 — text-align + line-height (한 줄)</h3>
+        <p class="desc">text-align: center + line-height를 height와 동일하게</p>
+        <div class="text-box text-method2">안녕하세요</div>
+      </div>
+
+      <div class="example">
+        <h3>방법 3 — Padding 균등 배분</h3>
+        <p class="desc">
+          height: auto + padding 상하 균등 + text-align: center
+        </p>
+        <div class="text-box text-method3">안녕하세요</div>
+      </div>
+
+      <div class="example">
+        <h3>방법 4 — Position + Transform</h3>
+        <p class="desc">
+          position: absolute + top/left: 50% + translate(-50%, -50%)
+        </p>
+        <div class="text-box text-method4"><span>안녕하세요</span></div>
+      </div>
+    </div>
+  </body>
+</html>

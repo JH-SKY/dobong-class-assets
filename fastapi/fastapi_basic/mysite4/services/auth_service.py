@@ -11,6 +11,9 @@ from dotenv import load_dotenv
 from mysite4.repositories.user_repository import user_repository
 from mysite4.models.user import User
 from mysite4.schemas.user import UserCreate, UserLogin
+import logging
+
+logger = logging.getLogger(__name__)  # 파일 상단에 한 번만 선언
 
 load_dotenv()
 SECRET_KEY = os.getenv("JWT_SECRET_KEY")
@@ -24,10 +27,14 @@ class AuthService:
         return bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt()).decode("utf-8")
 
     def signup(self, db: Session, data: UserCreate):
+        logger.info(f"회원가입 시도: {data.email}")
+
         with db.begin():
             # 1. 이메일 중복 검사
             existing_user = user_repository.find_by_email(db, data.email)
             if existing_user:
+                logger.warning(f"회원가입 실패 - 이메일 중복: {data.email}")
+
                 raise HTTPException(
                     status_code=status.HTTP_409_CONFLICT,
                     detail="이미 등록된 이메일입니다.",
@@ -41,6 +48,7 @@ class AuthService:
             user_repository.save(db, new_user)
 
         db.refresh(new_user)
+        logger.info(f"회원가입 성공: user_id={new_user.id}, email={data.email}")
 
         return new_user
 

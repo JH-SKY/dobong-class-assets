@@ -1,6 +1,5 @@
 # Python 가상환경
 .venv/
-__pycache__/
 *.py[cod]
 
 # 환경 변수 (중요!)
@@ -8,3 +7,23 @@ __pycache__/
 
 # uv 관련
 .python-version
+
+# 로그 파일
+*.log
+
+# OS 관련 임시 파일 (맥/윈도우 공통)
+.DS_Store
+Thumbs.db
+
+# Alembic 마이그레이션 캐시 (중요!)
+# 알렘빅을 배우고 계시니, 실행 시 생성되는 임시 캐시들을 제외해줍니다.
+__pycache__/
+
+# VS Code / IDE 설정 (나의 설정이 팀원에게 방해되지 않게)
+.vscode/
+.idea/
+
+# 테스트 결과 및 빌드 결과물
+.pytest_cache/
+dist/
+build/

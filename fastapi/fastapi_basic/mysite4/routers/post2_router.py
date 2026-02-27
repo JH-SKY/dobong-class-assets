@@ -60,3 +60,12 @@ def delete_post(
     current_user: User = Depends(get_current_user),  # 본인 확인용
 ):
     post2_service.delete_post(db, id, current_user)
+
+
+@router.post("/{id}/like", response_model=Post2DetailResponse, status_code=status.HTTP_201_CREATED)
+async def like_post(
+    id: int,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    return await post2_service.like_post(db, id, current_user)

@@ -1,0 +1,43 @@
+.box{
+    height: 100px;
+    width: 100px;
+    border: 1px solid;
+    padding: 20px;
+    margin: 10px;
+}
+
+.big-box{
+    height: 600px;
+    width: 600px;
+    border: 1px solid;
+    padding: 20px;
+    margin: 10px;
+}
+
+hr{
+    margin: 50px 0;
+}
+
+.flex{
+    display: flex;
+}
+
+.flex-col{
+    flex-direction: column;
+}
+
+.justify-center{
+    justify-content: center;
+}
+
+.justify-between{
+    justify-content: space-between;
+}
+
+.align-center{
+    align-items: center;
+}
+
+.space{
+    height: 100vh;
+}

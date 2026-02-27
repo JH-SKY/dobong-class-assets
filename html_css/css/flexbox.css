@@ -1,0 +1,54 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding: 2rem;
+  background: #fff;
+  color: #222;
+  font-family: -apple-system, sans-serif;
+}
+
+.base {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.base h2 {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.base h3 {
+  text-align: center;
+}
+
+.base hr {
+  border: none;
+  height: 1px;
+  background: #ddd;
+  margin-bottom: 1rem;
+}
+
+.box {
+  border: 2px solid #222;
+  height: 600px;
+}
+
+.base > .box > div {
+  padding: 12px 16px;
+  border: 1px solid #999;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  background: #e8f0fe;
+  color: #222;
+}
+
+.base > .box > div:nth-child(even) {
+  background: #fce8e8;
+}

@@ -1,0 +1,153 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #f5f5f5;
+  padding: 40px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #333;
+}
+h2 {
+  margin: 40px 0 20px;
+  color: #555;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 8px;
+}
+
+.example {
+  margin-bottom: 30px;
+}
+.example h3 {
+  margin-bottom: 10px;
+  color: #1a73e8;
+  font-size: 16px;
+}
+.example p.desc {
+  margin-bottom: 8px;
+  color: #666;
+  font-size: 14px;
+}
+
+/* 공통: 큰 박스 */
+.outer {
+  width: 300px;
+  height: 200px;
+  background: #e3f2fd;
+  border: 2px solid #1a73e8;
+  margin-bottom: 5px;
+}
+
+/* 공통: 작은 박스 */
+.inner {
+  width: 100px;
+  height: 60px;
+  background: #1a73e8;
+  color: #fff;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ========================================
+ 1. 박스 안에 박스 중앙정렬
+======================================== */
+
+/* 방법1: flexbox */
+.box-method1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 방법2: margin auto (수평만) + 수직은 padding */
+.box-method2 {
+  padding-top: 70px; /* (200 - 60) / 2 */
+}
+.box-method2 .inner {
+  margin: 0 auto;
+}
+
+/* 방법3: position + margin auto (상하좌우 0) */
+.box-method3 {
+  position: relative;
+}
+.box-method3 .inner {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+/* 방법4: position + transform */
+.box-method4 {
+  position: relative;
+}
+.box-method4 .inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ========================================
+ 2. 텍스트 중앙정렬
+======================================== */
+
+.text-box {
+  width: 300px;
+  height: 120px;
+  background: #fce4ec;
+  border: 2px solid #e91e63;
+  margin-bottom: 5px;
+  font-size: 16px;
+  color: #c2185b;
+  font-weight: bold;
+}
+
+/* 방법1: flexbox */
+.text-method1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 방법2: text-align + line-height (한 줄) */
+.text-method2 {
+  text-align: center;
+  line-height: 120px; /* height와 동일 */
+}
+
+/* 방법3: padding 균등 배분 (높이 auto) */
+.text-method3 {
+  height: auto;
+  padding: 48px 0;
+  text-align: center;
+}
+
+/* 방법4: position + transform */
+.text-method4 {
+  position: relative;
+}
+.text-method4 span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* 레이아웃 */
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}

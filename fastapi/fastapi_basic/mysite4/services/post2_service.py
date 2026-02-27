@@ -5,6 +5,7 @@ from mysite4.repositories.post2_repository import post2_repository
 from mysite4.models.post2 import Post2
 from mysite4.schemas.post2 import Post2Create
 from mysite4.models.user import User
+from mysite4.exceptions import NotFoundException
 
 
 class Post2Service:
@@ -24,13 +25,13 @@ class Post2Service:
     def read_post_by_id(self, db: Session, id: int):
         post = post2_repository.find_by_id(db, id)
         if not post:
-            raise HTTPException(
-                status.HTTP_404_NOT_FOUND, "존재하지 않는 게시글입니다."
-            )
+            # raise HTTPException(
+            #     status.HTTP_404_NOT_FOUND, "존재하지 않는 게시글입니다."
+            # )
+            raise NotFoundException("존재하지 않는 게시글입니다!!!!!!!")
         return post
 
-
-# mysite4/services/post2_service.py (추가)
+    # mysite4/services/post2_service.py (추가)
 
     def update_post(self, db: Session, id: int, data: Post2Create, current_user: User):
         post = self.read_post_by_id(db, id)
@@ -57,4 +58,6 @@ class Post2Service:
 
         post2_repository.delete(db, post)
         db.commit()
+
+
 post2_service = Post2Service()

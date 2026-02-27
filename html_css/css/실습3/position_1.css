@@ -1,0 +1,60 @@
+body {
+  height: 200vh;
+}
+.big-box {
+  position: relative;
+  margin: 100px auto 0;
+  border: 5px solid black;
+  width: 600px;
+  height: 600px;
+}
+
+.small-box {
+  width: 100px;
+  height: 100px;
+}
+
+#red {
+  background-color: red;
+  /* position: sticky;
+  top: 100px; */
+  position: fixed;
+
+}
+
+#gold {
+  background-color: gold;
+  position: relative;
+  left: 100px;
+  top: 100px;
+
+}
+
+#green {
+  background-color: green;
+  position: relative;
+  left: 200px;
+  top: 100px;
+
+}
+
+#blue {
+  background-color: blue;
+  position: absolute;
+  left: 200px;
+  top: 0;
+
+}
+
+#pink {
+  background-color: pink;
+  
+}
+
+#violet {
+  background-color: blueviolet;
+  position: fixed;
+  left: 100px;
+  top: 100px
+
+}

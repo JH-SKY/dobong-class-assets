@@ -1,0 +1,45 @@
+body {
+  height: 200vh;
+}
+.big-box {
+  position: relative;
+  margin: 100px auto 0;
+  border: 5px solid black;
+  width: 600px;
+  height: 600px;
+}
+
+.small-box {
+  width: 100px;
+  height: 100px;
+}
+
+#red {
+  background-color: red;
+
+}
+
+#gold {
+  background-color: gold;
+
+}
+
+#green {
+  background-color: green;
+
+}
+
+#blue {
+  background-color: blue;
+
+}
+
+#pink {
+  background-color: pink;
+
+}
+
+#violet {
+  background-color: blueviolet;
+
+}
