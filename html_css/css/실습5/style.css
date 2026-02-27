@@ -1,0 +1,230 @@
+* {
+    margin: 0;
+}
+
+a {
+    text-decoration: none; /* 모든 링크에서 밑줄 제거 */
+    color: inherit;       /* 선택 사항: 링크 색상을 기본 글자 색으로 변경 */
+}
+
+ul {
+  list-style: none; /* 점(불릿) 제거 */
+  padding-left: 0;  /* 왼쪽 들여쓰기 제거 */
+}
+
+
+.logo{
+    color: blue;
+    margin: 10px;
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header > nav > a{
+    margin: 0 10px;
+}
+
+.hero{
+    height: 40vh;
+    background-color: blue;
+    color:  white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero > * {
+    margin: 10px;
+}
+
+.hero button{
+    padding: 10px 20px;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    color: blue;
+}
+
+.introduction{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.introduction > h2 {
+    margin: 20px;
+}
+
+.introduction-cards{
+    display: flex;
+    gap:20px;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    
+
+    height: 180px;
+    width: 200px;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+
+    box-shadow: 1px 3px 5px gray;
+
+}
+
+.card > .icon{
+    font-size: 2rem;
+}
+
+.team{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: gainsboro;
+    padding: 40px 0;
+}
+
+.team > h2{
+    margin: 20px;
+}
+
+
+.profiles{
+    display: flex;
+
+}
+
+.profile{
+    display: flex;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 1px 3px 5px gray;
+
+
+}
+
+.profile > .icon{
+    font-size: 2rem;
+    background-color: blue;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    color: white;
+    border-radius: 50%;
+    margin: 10px;
+}
+
+.profile-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profile-content > div:first-child{
+    font-weight: bold;
+}
+
+.pricing{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+.pricing > h2{
+    margin: 20px;
+}
+
+.pricing-cards{
+    display: flex;
+
+}
+
+.pricing-card{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 400px;
+    align-items: center;
+    padding: 40px 0px;
+    box-shadow: 1px 1px 1px gray;
+    margin: 10px;
+
+}
+
+.pricing-card > * {
+    margin: 10px 0;
+}
+
+.pricing-card > ul{
+    width: 80%;
+}
+.pricing-card li{
+    border-bottom: 1px solid gray;
+    text-align: center;
+    padding: 5px;
+}
+
+.pricing-card > button{
+    margin-top: auto;
+    border: 5px solid blue;
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.pricing-card > h3{
+    font-size: 2rem;
+}
+
+.pricing-card > div:nth-child(2){
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.focus{
+    background-color: blue;
+    color: white;
+}
+
+.footer{
+    background-color: darkblue;
+    color: white;
+    padding: 40px 80px;
+}
+
+.footer-content{
+    display: flex;
+    gap: 160px;
+}
+
+.footer-content > div>h3{
+    margin: 20px 0;
+}
+
+.footer-content > div > * > *{
+    margin: 5px 0;
+}
+
+.footer > div:last-child{
+    text-align: center;
+    margin-top: 30px;
+}
