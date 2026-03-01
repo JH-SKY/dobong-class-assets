@@ -26,3 +26,8 @@ def get_categories(db: Session = Depends(get_db)):
 @router.get("/{category_id}/products")
 def get_products_by_category(category_id: int, db: Session = Depends(get_db)):
     return category_service.get_products_by_category(category_id, db)
+
+# @router.get("/{category_id}/products")
+# def get_products_by_category(category_id: int, db: Session = Depends(get_db)):
+#     return category_service.get_products_by_category(category_id, db)
+
