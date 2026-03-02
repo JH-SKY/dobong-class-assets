@@ -7,10 +7,6 @@ names_ls = [
 
 from random import *
 def make_group(names, size=4):
-    #원본 리스트 복사해서 기능구현
-    #조구성은 4명을 기본으로 하고 사용자가 변경 가능
-    #join을 활용해서 깔끔한 형태로 출력되게끔 변경
-    #딕셔너리 형태로 출력
     names = names[:]
     shuffle(names)
     lst = {}
