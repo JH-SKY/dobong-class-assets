@@ -15,4 +15,4 @@ for title in titles:
 
 browser.close()
 pw.stop()
-time.sleep(10)
+time.sleep(1)

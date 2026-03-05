@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <body>
+    <form id="my-form">
+      <label>
+        이름:
+        <input type="text" name="name" minlength="5" required />
+      </label>
+      <label>
+        이메일:
+        <input type="email" name="email" required />
+      </label>
+      <button type="submit">제출</button>
+    </form>
+
+    <script>
+      const form = document.querySelector("#my-form");
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        // FormData 생성 (이벤트가 발생한 폼 전달)
+        const formData = new FormData(event.currentTarget);
+
+        // get 메서드를 통해 name 속성값으로 데이터 추출
+        console.log(formData.get("name")); // name 입력 값
+        console.log(formData.get("email")); // email 입력 값
+
+        // 모든 데이터를 객체 형태로 한 번에 변환
+        const data = Object.fromEntries(formData.entries());
+        console.log(formData);
+
+        console.log(data); // { name: "...", email: "..." }
+      });
+    </script>
+  </body>
+</html>

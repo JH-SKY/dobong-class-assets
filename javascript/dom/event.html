@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <button onclick="showAlert()">버튼1</button>
+    <button id="button2">버튼2</button>
+    <button id="button3">버튼3</button>
+    <input type="text" id="search" />
+
+    <div class="box"></div>
+    <script>
+      function showAlert() {
+        alert("클릭됨!");
+      }
+
+      const button2 = document.querySelector("#button2");
+      button2.textContent = "버튼2임";
+      button2.addEventListener("click", function () {
+        alert("클릭됨! 버튼2임.");
+        button2.textContent = "버튼2가 눌렸음!";
+      });
+
+      const button3 = document.querySelector("#button3");
+      button3.addEventListener("click", showAlert);
+
+      //   button3.removeEventListener("click", showAlert);
+
+      const inputTag = document.querySelector("#search");
+      inputTag.addEventListener("focus", function () {
+        inputTag.style.backgroundColor = "yellow";
+      });
+
+      const divTag = document.querySelector(".box");
+      divTag.addEventListener("mouseover", function (event) {
+        console.log(event.target);
+        console.log(event.type);
+        console.log(event);
+
+        // divTag.style.backgroundColor = "blue";
+        event.target.style.backgroundColor = "blue";
+      });
+      divTag.addEventListener("mouseout", function () {
+        divTag.style.backgroundColor = "red";
+      });
+
+      window.addEventListener("mousemove", function (event) {
+        // console.log(event.clientX, event.clientY);
+      });
+    </script>
+  </body>
+</html>

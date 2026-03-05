@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="" id="my-form" method="post">
+      <input type="text" name="query" />
+      <input type="submit" />
+      <button>클릭</button>
+    </form>
+
+    <script>
+      const myForm = document.querySelector("#my-form");
+
+      myForm.addEventListener("submit", function (e) {
+        // e.preventDefault();
+        // axios 내가 직접 요청을 보냅니다.
+        // 응답으로 화면을 그립니다.
+        // 대체 왜 form을 쓰느냐 어차피 막을꺼면서?
+      });
+    </script>
+  </body>
+</html>

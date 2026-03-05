@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .red {
+        color: red;
+        font-size: 12px;
+        /* background-color: ; */
+      }
+    </style>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+  </head>
+  <body>
+    <p class="some any nothing">내용</p>
+    <a href="https://www.naver.com">네이버로 이동</a>
+
+    <div class="box">
+      <p>haha</p>
+    </div>
+
+    <script>
+      const pTag = document.querySelector("p");
+      pTag.textContent = "바뀐 내용이야.";
+      pTag.style.fontSize = "32px";
+      pTag.classList.add("red");
+
+      const aTag = document.querySelector("a");
+
+      pTag.textContent = aTag.href;
+
+      pTag.addEventListener("click", () => {
+        pTag.classList.toggle("red");
+      });
+      //////////////////////////////////////////////////////////////////////
+      const newTag = document.createElement("p");
+      newTag.textContent = "내가 만든 태그야.";
+      newTag.classList.add("red");
+      const body = document.querySelector("body");
+      body.append(newTag);
+
+      //   newTag.remove();
+    </script>
+  </body>
+</html>
