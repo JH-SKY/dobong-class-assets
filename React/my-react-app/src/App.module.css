@@ -1,0 +1,10 @@
+/* App.module.css */
+.container {
+  text-align: center;
+  margin-top: 4rem;
+}
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: blue;
+}
