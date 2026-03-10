@@ -8,11 +8,11 @@ const TodoItem = ({ text, isDone }) => {
   <span className={`todo-item done`}>{text}</span>; //true일 때
   <span className={`todo-item `}>{text}</span>; // false일 때
 
-  <span
-    className={`todo-item ${isDone ? "done" : ""} ${isImportant ? "important" : ""}`}
-  >
-    {text}
-  </span>;
+  // <span
+  //   className={`todo-item ${isDone ? "done" : ""} ${isImportant ? "important" : ""}`}
+  // >
+  //   {text}
+  // </span>;
 };
 
 export default TodoItem;

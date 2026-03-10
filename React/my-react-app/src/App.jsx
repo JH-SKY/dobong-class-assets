@@ -9,6 +9,11 @@ import JsxBase from "./components/jsx_prac/JsxBase";
 import PropsBase from "./components/props_prac/PropsBase";
 import ChildrenBase from "./components/children_prac/ChildrenBase";
 import RenderingBase from "./components/rendering_prac/RenderingBase";
+import RenderingProb from "./components/rendering_prob/RenderingProb";
+import EventBase from "./components/event_prac/EventBase";
+import StateBase from "./components/state_prac/StateBase";
+import StateProb from "./components/state_prob/StateProb";
+import StateAdvBase from "./components/state_adv_prac/StateAdvBase";
 
 function App() {
   return (
@@ -30,7 +35,12 @@ function App() {
       <button className="bg-blue-500 py-2 hover:bg-red-700 text-white font-bold  px-4 rounded">
         버튼
       </button> */}
-      <RenderingBase />
+      {/* <RenderingBase /> */}
+      {/* <RenderingProb /> */}
+      {/* <EventBase /> */}
+      {/* <StateBase /> */}
+      {/* <StateProb /> */}
+      <StateAdvBase />
     </>
   );
 }
