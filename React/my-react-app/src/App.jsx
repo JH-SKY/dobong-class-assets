@@ -1,6 +1,5 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import styles from "./App.module.css";
 
@@ -14,6 +13,7 @@ import EventBase from "./components/event_prac/EventBase";
 import StateBase from "./components/state_prac/StateBase";
 import StateProb from "./components/state_prob/StateProb";
 import StateAdvBase from "./components/state_adv_prac/StateAdvBase";
+import StateAdvBase2 from "./components/state_adv_prob_jh/StateAdvBase2";
 
 function App() {
   return (
@@ -40,7 +40,8 @@ function App() {
       {/* <EventBase /> */}
       {/* <StateBase /> */}
       {/* <StateProb /> */}
-      <StateAdvBase />
+      {/* <StateAdvBase /> */}
+      <StateAdvBase2 />
     </>
   );
 }
