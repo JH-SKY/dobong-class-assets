@@ -5,7 +5,9 @@ import Profile from "./Profile";
 import UserList from "./UserLIst";
 import UserListLoading from "./UserListLoading";
 import UserListException from "./UserListException";
-import MovieList from "./MovieList";
+import UserProfile from "./UserProfile";
+import PostList from "./PostList";
+import TimerContainer from "./TImerContainer";
 
 export const UseEffectBase = () => {
   return (
@@ -17,7 +19,9 @@ export const UseEffectBase = () => {
       <UserList /> */}
       {/* <UserListLoading /> */}
       {/* <UserListException /> */}
-      <MovieList />
+      {/* <UserProfile /> */}
+      <PostList />
+      <TimerContainer />
     </>
   );
 };

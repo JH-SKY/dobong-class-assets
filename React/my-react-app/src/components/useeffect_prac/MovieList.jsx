@@ -59,7 +59,7 @@ const MovieList = () => {
       <div>MovieList</div>
       <div className="flex flex-wrap">
         {movies.map((movie) => {
-          return <MovieLIstItem key={movie.id} movie={movie} />;
+          return <MovieLIstItem movie={movie} />;
         })}
       </div>
     </>
