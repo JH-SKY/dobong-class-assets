@@ -6,6 +6,8 @@ const API_URL = "http://localhost:8000/todos";
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
   const [inputText, setInputText] = useState("");
+  const [editId, setEditId] = useState(null);
+  const [editText, setEditText] = useState("");
 
   const fetchTodos = async () => {
     const response = await axios.get(API_URL);
@@ -72,6 +74,38 @@ const TodoList = () => {
     }
   };
 
+  const handleEditText = async (e, todoId) => {
+    if (e.key !== "Enter") return;
+    // 수정로직이 들거갈껍니다.
+
+    try {
+      const data = { text: editText };
+      console.log(data);
+
+      await axios.put(API_URL + `/${todoId}`, data);
+
+      const newTodos = todos.map((todo) => {
+        return todo.id === todoId ? { ...todo, text: editText } : todo;
+      });
+      console.log(newTodos);
+      setTodos(newTodos);
+
+      setEditId(null);
+      setEditText("");
+      // fetchTodos() 로 바꿀 수 있습니다.
+
+      // 성공하면 상태 바꾸기
+    } catch (error) {
+      // 실패하면 상태 바꾸지 않고 알람 보내기
+    }
+  };
+
+  const startEdit = (todo) => {
+    setEditId(todo.id);
+    setEditText(todo.text);
+    // useref같은걸 활용해서 input 태그에 focus가 가도록 할 수도 있습니다.
+  };
+
   return (
     <div>
       <h2>TodoList</h2>
@@ -87,13 +121,26 @@ const TodoList = () => {
       <ul>
         {todos.map((todo) => (
           <li className="card" key={todo.id}>
-            <span
-              className={todo.done ? `line-through` : ""}
-              onClick={() => handleUpdate(todo.id)}
-            >
-              {todo.text}
-            </span>
+            {editId === todo.id ? (
+              <input
+                className="input"
+                onChange={(e) => setEditText(e.target.value)}
+                onKeyDown={(e) => handleEditText(e, todo.id)}
+                value={editText}
+                autoFocus
+              />
+            ) : (
+              <span
+                onClick={() => startEdit(todo)}
+                className={todo.done ? `line-through` : ""}
+              >
+                {todo.text}
+              </span>
+            )}
 
+            <button onClick={() => handleUpdate(todo.id)} className="button">
+              완료
+            </button>
             <button
               onClick={() => handleDelete(todo.id)}
               className="button ml-5"

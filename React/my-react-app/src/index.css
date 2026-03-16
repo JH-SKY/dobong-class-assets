@@ -30,3 +30,19 @@ hr {
 .input{
     border: 1px solid black;
 }
+
+/* src/layouts/Layout.css */
+nav {
+  display: flex;
+  gap: 16px;
+}
+
+nav a {
+  text-decoration: none;
+  color: gray;
+}
+
+nav a.active {
+  color: black;
+  font-weight: bold;
+}

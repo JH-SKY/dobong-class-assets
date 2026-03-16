@@ -37,9 +37,9 @@ const PostsPage = () => {
   };
 
   const goNext = () => {
-    if (skip + LIMIT >= TOTAL) {
-      return;
-    }
+    // if (skip + LIMIT >= TOTAL) {
+    //   return;
+    // }
     setSkip(skip + LIMIT);
   };
 

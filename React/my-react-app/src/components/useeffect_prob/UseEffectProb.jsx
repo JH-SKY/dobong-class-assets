@@ -8,7 +8,6 @@ import TodoList from "./TodoList";
 import MovieSearch from "./MovieSearch";
 import ProductsSort from "./ProductsSort";
 import ProductsPage from "./PostsPage";
-import PostsJh  from "./PostsJh";
 
 const UseEffectProb = () => {
   return (
@@ -22,8 +21,7 @@ const UseEffectProb = () => {
       {/* <TodoList /> */}
       {/* <MovieSearch /> */}
       {/* <ProductsSort /> */}
-      {/* <ProductsPage /> */}
-      <PostsJh/>
+      <ProductsPage />
     </>
   );
 };
