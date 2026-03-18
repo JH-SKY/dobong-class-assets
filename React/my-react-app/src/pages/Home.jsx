@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Counter from "../components/zustand_prac/Counter";
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
       <br />
       <Link to="/contact">contact 이동</Link>
       <br />
+      <Counter />
     </div>
   );
 };

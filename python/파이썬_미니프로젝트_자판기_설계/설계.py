@@ -72,6 +72,7 @@ class VendingMachine :
         print('상품을 찾을수 없습니다.')
 
 
+
 # 테스트 시나리오
 # --- 1. 자판기 설치 및 상품 등록 ---
 vending_machine = VendingMachine()

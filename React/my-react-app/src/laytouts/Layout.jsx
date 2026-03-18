@@ -6,6 +6,8 @@ const Layout = () => {
     <div>
       <header>
         <nav>
+          {/* 오류 강제 발생 */}
+          {/* {undefined.attribute} */}
           <NavLink className="button" to="/">
             홈
           </NavLink>
@@ -14,6 +16,15 @@ const Layout = () => {
           </NavLink>
           <NavLink to="/contact" className="button">
             연락처
+          </NavLink>
+          <NavLink to="/settings" className="button">
+            세팅
+          </NavLink>
+          <NavLink to="/mypage" className="button">
+            마이페이지
+          </NavLink>
+          <NavLink to="/layout-prob/home" className="button">
+            /layout-prob
           </NavLink>
         </nav>
       </header>

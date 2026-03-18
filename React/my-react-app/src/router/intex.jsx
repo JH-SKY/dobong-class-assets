@@ -1,22 +1,14 @@
-// // src/router/index.jsx
-// import { createBrowserRouter } from "react-router-dom";
-// import Home from "../pages/Home";
-// import About from "../pages/About";
-// import Contact from "../pages/Contact";
+// src/router/index.jsx
+import { createBrowserRouter } from "react-router-dom";
+import Layout from "../components/auth_prac/AuthLayout";
+import Home from "../components/auth_prac/AuthHome";
 
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <Home />,
-//   },
-//   {
-//     path: "/about",
-//     element: <About />,
-//   },
-//   {
-//     path: "/contact",
-//     element: <Contact />,
-//   },
-// ]);
+const router = createBrowserRouter([
+  {
+    path: "/auth",
+    element: <Layout />,
+    children: [{ index: true, element: <Home /> }],
+  },
+]);
 
-// export default router;
+export default router;

@@ -10,6 +10,7 @@ const ShopLayout = () => {
           <NavLink to="home">홈</NavLink>
           <NavLink to="products">상품</NavLink>
           <NavLink to="cart">장바구니</NavLink>
+          <NavLink to="login">로그인</NavLink>
         </nav>
       </header>
       <main>
