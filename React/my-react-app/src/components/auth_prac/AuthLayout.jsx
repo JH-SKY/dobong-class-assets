@@ -1,10 +1,10 @@
 // src/components/auth_prac/Layout.jsx
 import { Outlet } from "react-router-dom";
-import AuthHeader from "./AuthHeader";
+import Header from "./Header";
 
 const AuthLayout = () => (
   <>
-    <AuthHeader />
+    <Header />
     <Outlet />
   </>
 );

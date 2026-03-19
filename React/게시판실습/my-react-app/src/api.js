@@ -15,7 +15,7 @@ api.interceptors.request.use((config) => {
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
-  
+
   // 이제 준비 완료! 서버로 출발합니다.
   return config;
 });

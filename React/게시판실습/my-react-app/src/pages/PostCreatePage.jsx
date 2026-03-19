@@ -41,49 +41,93 @@ const PostCreatePage = () => {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>새 글 작성하기</h1>
+    <div style={{ 
+      maxWidth: "800px", 
+      margin: "0 auto", 
+      backgroundColor: "white", 
+      padding: "40px", 
+      borderRadius: "12px",
+      boxShadow: "0 4px 20px rgba(0,0,0,0.08)" 
+    }}>
+      <h1 style={{ marginBottom: "30px", fontSize: "24px", color: "#222" }}>새 게시글 작성</h1>
 
       {/* 1. 인풋칸 만들기: 폼(form) 형태로 감싸서 제출 기능을 만듭니다. */}
       <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: "10px" }}>
-          <label>제목</label>
-          <br />
+        <div style={{ marginBottom: "20px" }}>
+          <label style={{ display: "block", marginBottom: "8px", fontWeight: "600", color: "#555" }}>제목</label>
           <input
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)} // 글자 타이핑할 때마다 그릇에 담기
             placeholder="제목을 입력하세요"
             required
-            style={{ width: "100%", padding: "10px" }}
+            style={{ 
+              width: "100%", 
+              padding: "12px 15px", 
+              borderRadius: "8px", 
+              border: "1px solid #ddd",
+              fontSize: "16px",
+              boxSizing: "border-box", // 패딩이 너비에 영향을 주지 않게 설정
+              outline: "none"
+            }}
           />
         </div>
 
-        <div style={{ marginBottom: "10px" }}>
-          <label>내용</label>
-          <br />
+        <div style={{ marginBottom: "30px" }}>
+          <label style={{ display: "block", marginBottom: "8px", fontWeight: "600", color: "#555" }}>내용</label>
           <textarea
             value={content}
             onChange={(e) => setContent(e.target.value)} // 글자 타이핑할 때마다 그릇에 담기
-            placeholder="내용을 입력하세요"
+            placeholder="내용을 자유롭게 입력하세요"
             required
-            style={{ width: "100%", height: "200px", padding: "10px" }}
+            style={{ 
+              width: "100%", 
+              height: "300px", 
+              padding: "15px", 
+              borderRadius: "8px", 
+              border: "1px solid #ddd",
+              fontSize: "16px",
+              lineHeight: "1.6",
+              boxSizing: "border-box",
+              resize: "none", // 사용자가 크기 조절 못 하게 고정
+              outline: "none"
+            }}
           />
         </div>
 
-        <button
-          type="submit"
-          style={{ padding: "10px 20px", cursor: "pointer" }}
-        >
-          작성 완료
-        </button>
-        <button
-          type="button"
-          onClick={() => navigate("/")}
-          style={{ marginLeft: "10px" }}
-        >
-          취소
-        </button>
+        <div style={{ display: "flex", justifyContent: "flex-end", gap: "10px" }}>
+          {/* 설계 의도: 취소 버튼은 눈에 덜 띄게, 작성 완료 버튼은 강조색(파란색)으로 배치합니다. */}
+          <button
+            type="button"
+            onClick={() => navigate("/")}
+            style={{ 
+              padding: "12px 25px", 
+              backgroundColor: "#f5f5f5", 
+              color: "#666", 
+              border: "none", 
+              borderRadius: "8px", 
+              cursor: "pointer",
+              fontWeight: "600"
+            }}
+          >
+            취소
+          </button>
+          
+          <button
+            type="submit"
+            style={{ 
+              padding: "12px 25px", 
+              backgroundColor: "#007bff", 
+              color: "white", 
+              border: "none", 
+              borderRadius: "8px", 
+              cursor: "pointer",
+              fontWeight: "600"
+            }}
+          >
+            작성 완료
+          </button>
+        </div>
       </form>
     </div>
   );

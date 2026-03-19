@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
@@ -24,8 +24,15 @@ import UseRefBase from "./components/useref_prac/UseRefBase";
 // router에 대한 import
 import { RouterProvider } from "react-router-dom";
 import router from "./router";
+import useAuthStore from "./store/useAuthStore";
 
 function App() {
+  const checkAuth = useAuthStore((state) => state.checkAuth);
+
+  useEffect(() => {
+    checkAuth();
+  }, []);
+
   return (
     <>
       {/* <Base /> */}

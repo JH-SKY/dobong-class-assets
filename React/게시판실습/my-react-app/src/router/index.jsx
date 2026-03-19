@@ -6,6 +6,7 @@ import LoginPage from "../pages/LoginPage";
 import PostList from "../pages/PostList";
 import PostDetailPage from "../pages/PostDetailPage";
 import PostCreatePage from "../pages/PostCreatePage";
+import ChatPage from "../pages/ChatPage";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
       { path: "login", element: <LoginPage /> },
       { path: "posts/:id", element: <PostDetailPage /> },
       { path: "posts/new", element: <PostCreatePage /> },
+      { path: "chat/:conversationId", element: <ChatPage /> },
     ],
   },
 ]);

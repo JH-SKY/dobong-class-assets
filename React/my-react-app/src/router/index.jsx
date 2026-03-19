@@ -1,5 +1,5 @@
 // src/router/index.jsx
-// import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home";
 import About from "../pages/About";
 import Contact from "../pages/Contact";
@@ -28,16 +28,37 @@ import Theme from "../components/zustand_prac/Theme";
 import ShoppingList from "../components/zustand_prac/ShoppingList";
 import ShoppingCart from "../components/zustand_prac/ShoppingCart";
 import ProtectedRoute from "../components/ProtectedRoute";
-import { createBrowserRouter } from "react-router-dom";
 import AuthLayout from "../components/auth_prac/AuthLayout";
 import AuthHome from "../components/auth_prac/AuthHome";
-import SignupPage from "../components/auth_prac/SignupPage";
+import AuthSignup from "../components/auth_prac/AuthSignup";
+import AuthLogin from "../components/auth_prac/AuthLogin";
+import AuthProtectedRoute from "../components/auth_prac/AuthProtectedRoute";
+import AuthMyPage from "../components/auth_prac/AuthMyPage";
+import Chat from "../components/stream_prac/Chat";
+
+const authRoute = {
+  path: "/auth",
+  element: <AuthLayout />,
+  children: [
+    { index: true, element: <AuthHome /> },
+    { path: "signup", element: <AuthSignup /> },
+    { path: "login", element: <AuthLogin /> },
+    {
+      element: <AuthProtectedRoute />,
+      children: [{ path: "mypage", element: <AuthMyPage /> }],
+    },
+  ],
+};
 
 const mainRoute = {
   path: "/",
   element: <Layout />,
   errorElement: <ErrorPage />,
   children: [
+    {
+      path: "chat",
+      element: <Chat />,
+    },
     {
       index: true,
       element: <Home />,
@@ -76,6 +97,7 @@ const mainRoute = {
         },
       ],
     },
+
     {
       element: <ProtectedRoute />,
       children: [
@@ -147,15 +169,7 @@ const router = createBrowserRouter([
     path: "*",
     element: <NotFound />,
   },
-  {
-    path: "/auth",
-    element: <AuthLayout />,
-    children: [
-      { index: true, element: <AuthHome /> },
-      { path: "signup", element: <SignupPage /> },
-      { path: "signup", element: <SignupPage /> },
-    ],
-  },
+  authRoute,
 ]);
 
 export default router;
