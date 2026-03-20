@@ -14,6 +14,7 @@ const Header = () => {
         <div>
           <span>{user.email}님</span>
           <button onClick={logout}>로그아웃</button>
+          <Link to="/ai-chat">ai chat</Link>
         </div>
       ) : (
         <div>
@@ -21,6 +22,7 @@ const Header = () => {
           <Link to="/auth/signup">회원가입</Link>
         </div>
       )}
+      <div></div>
     </header>
   );
 };

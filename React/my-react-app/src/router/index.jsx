@@ -35,6 +35,8 @@ import AuthLogin from "../components/auth_prac/AuthLogin";
 import AuthProtectedRoute from "../components/auth_prac/AuthProtectedRoute";
 import AuthMyPage from "../components/auth_prac/AuthMyPage";
 import Chat from "../components/stream_prac/Chat";
+import ChatHistory from "../components/stream_prac/ChatHistory";
+import AiChatPage from "../components/stream_prac/AiChat";
 
 const authRoute = {
   path: "/auth",
@@ -58,6 +60,14 @@ const mainRoute = {
     {
       path: "chat",
       element: <Chat />,
+    },
+    {
+      path: "chat-history",
+      element: <ChatHistory />,
+    },
+    {
+      path: "ai-chat",
+      element: <AiChatPage />,
     },
     {
       index: true,

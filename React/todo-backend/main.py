@@ -231,3 +231,178 @@ def chat(body: dict):
         generate_response(body["message"]),
         media_type="text/event-stream",
     )
+
+
+# main.py — 기존 코드에 추가할 부분
+
+# --- import 추가 ---
+import os
+from dotenv import load_dotenv
+from openai import OpenAI
+from sqlalchemy import ForeignKey, Text
+
+load_dotenv()
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+# --- Chat 모델 ---
+
+
+class Conversation(Base):
+    __tablename__ = "conversations"
+
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False)
+    title: Mapped[str] = mapped_column(String(200), default="새 대화")
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime, server_default=func.now(), nullable=False
+    )
+
+
+class Message(Base):
+    __tablename__ = "messages"
+
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+    conversation_id: Mapped[int] = mapped_column(
+        ForeignKey("conversations.id", ondelete="CASCADE"), nullable=False
+    )
+    role: Mapped[str] = mapped_column(String(10), nullable=False)
+    content: Mapped[str] = mapped_column(Text, nullable=False)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime, server_default=func.now(), nullable=False
+    )
+
+
+Base.metadata.create_all(bind=engine)
+
+# --- Chat API ---
+
+
+@app.get("/conversations")
+def get_conversations(
+    current_user: User = Depends(get_current_user), db: Session = Depends(get_db)
+):
+    stmt = (
+        select(Conversation)
+        .where(Conversation.user_id == current_user.id)
+        .order_by(Conversation.created_at.desc())
+    )
+    return db.scalars(stmt).all()
+
+
+@app.post("/conversations", status_code=status.HTTP_201_CREATED)
+def create_conversation(
+    current_user: User = Depends(get_current_user), db: Session = Depends(get_db)
+):
+    conversation = Conversation(user_id=current_user.id)
+
+    db.add(conversation)
+    db.commit()
+    db.refresh(conversation)
+    return conversation
+
+
+@app.delete("/conversations/{conversation_id}")
+def delete_conversation(
+    conversation_id: int,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+
+    conversation = db.scalar(
+        select(Conversation).where(
+            Conversation.id == conversation_id,
+            Conversation.user_id == current_user.id,
+        )
+    )
+    if not conversation:
+        raise HTTPException(status_code=404, detail="대화를 찾을 수 없습니다.")
+    db.delete(conversation)
+    db.commit()
+    return {"message": "삭제 완료"}
+
+
+@app.get("/conversations/{conversation_id}/messages")
+def get_messages(
+    conversation_id: int,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    conversation = db.scalar(
+        select(Conversation).where(
+            Conversation.id == conversation_id,
+            Conversation.user_id == current_user.id,
+        )
+    )
+    if not conversation:
+        raise HTTPException(status_code=404, detail="대화를 찾을 수 없습니다.")
+
+    stmt = (
+        select(Message)
+        .where(Message.conversation_id == conversation_id)
+        .order_by(Message.created_at)
+    )
+    return db.scalars(stmt).all()
+
+
+@app.post("/conversations/{conversation_id}/chat")
+def ai_chat(
+    conversation_id: int,
+    body: dict,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    conversation = db.scalar(
+        select(Conversation).where(
+            Conversation.id == conversation_id,
+            Conversation.user_id == current_user.id,
+        )
+    )
+    if not conversation:
+        raise HTTPException(status_code=404, detail="대화를 찾을 수 없습니다.")
+
+    # 유저 메시지 저장
+    user_message = Message(
+        conversation_id=conversation_id, role="user", content=body["message"]
+    )
+    db.add(user_message)
+    db.commit()
+
+    # DB에서 대화 히스토리 조회
+    stmt = (
+        select(Message)
+        .where(Message.conversation_id == conversation_id)
+        .order_by(Message.created_at)
+    )
+    messages = db.scalars(stmt).all()
+    openai_messages = [{"role": msg.role, "content": msg.content} for msg in messages]
+
+    # 첫 메시지면 대화 제목 설정
+    if len(openai_messages) == 1:
+        conversation.title = body["message"][:30]
+        db.commit()
+
+    def generate():
+        full_response = ""
+        stream = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=openai_messages,
+            stream=True,
+        )
+        for chunk in stream:
+            content = chunk.choices[0].delta.content
+            if content:
+                full_response += content
+                yield f"data: {content}\n\n"
+
+        yield "data: [DONE]\n\n"
+
+        # AI 응답 저장
+        ai_message = Message(
+            conversation_id=conversation_id,
+            role="assistant",
+            content=full_response,
+        )
+        db.add(ai_message)
+        db.commit()
+
+    return StreamingResponse(generate(), media_type="text/event-stream")
