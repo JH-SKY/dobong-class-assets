@@ -7,10 +7,18 @@ requires-python = ">=3.12"
 dependencies = [
     "ipykernel>=7.2.0",
     "langchain>=1.2.13",
+    "langchain-chroma>=1.1.0",
     "langchain-community>=0.4.1",
     "langchain-google-genai>=4.2.1",
+    "langchain-ollama>=1.0.1",
     "langchain-openai>=1.1.11",
     "langchain-postgres>=0.0.17",
+    "psycopg2-binary>=2.9.11",
     "psycopg[binary]>=3.3.3",
+    "pypdf>=6.9.2",
     "python-dotenv>=1.2.2",
+    "rank-bm25>=0.2.2",
+    "requests>=2.32.5",
+    "sqlalchemy>=2.0.48",
+    "tavily-python>=0.7.23",
 ]
