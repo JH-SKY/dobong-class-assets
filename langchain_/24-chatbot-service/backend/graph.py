@@ -44,7 +44,6 @@ if not DATABASE_URL:
 
 graph = None
 
-
 async def init_graph():
     global graph
     from psycopg import AsyncConnection

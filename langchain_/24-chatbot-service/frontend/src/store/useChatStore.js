@@ -57,7 +57,10 @@ const useChatStore = create((set, get) => ({
 
     // AI 응답 자리 생성 (tools 배열 포함)
     set((state) => ({
-      messages: [...state.messages, { role: "assistant", content: "", tools: [] }],
+      messages: [
+        ...state.messages,
+        { role: "assistant", content: "", tools: [] },
+      ],
     }));
 
     try {
@@ -68,7 +71,7 @@ const useChatStore = create((set, get) => ({
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ message: content }),
-        }
+        },
       );
 
       if (!response.ok) {
@@ -85,7 +88,9 @@ const useChatStore = create((set, get) => ({
 
         // chunk를 텍스트로 변환하고 SSE 형식(data: ...)인 줄만 필터링
         const text = decoder.decode(value, { stream: true });
-        const lines = text.split("\n").filter((line) => line.startsWith("data: "));
+        const lines = text
+          .split("\n")
+          .filter((line) => line.startsWith("data: "));
 
         for (const line of lines) {
           const data = line.slice(6); // "data: " 제거
@@ -101,12 +106,15 @@ const useChatStore = create((set, get) => ({
             if (parsed.type === "token") {
               last.content += parsed.content;
             } else if (parsed.type === "tool_call") {
-              last.tools = [...(last.tools || []), { name: parsed.name, status: "calling" }];
+              last.tools = [
+                ...(last.tools || []),
+                { name: parsed.name, status: "calling" },
+              ];
             } else if (parsed.type === "tool_result") {
               last.tools = (last.tools || []).map((t) =>
                 t.name === parsed.name && t.status === "calling"
                   ? { ...t, status: "done" }
-                  : t
+                  : t,
               );
             }
 
